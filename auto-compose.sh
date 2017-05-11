@@ -1,7 +1,7 @@
 #!/bin/sh
 
 consulUrl=${CONSUL_URL:-http://localhost:8500}
-consulWait=${CONSUL_WAIT:-5m}
+consulWait=${CONSUL_WAIT:-300}
 logLevel=${LOG_LEVEL:-2}
 workDir=${WORK_DIR:-/var/lib/auto-compose}
 
@@ -62,8 +62,8 @@ auto_compose_watch() {
     stepbackTime=1
     lastIndex=0
     while true; do
-        [ $stepbackTime -ge 5 ] && stepbackTime=5
-        url="$consulUrl/v1/kv/$1?index=$lastIndex&wait=$consulWait"
+        [ $stepbackTime -ge $consulWait ] && stepbackTime=$consulWait
+        url="$consulUrl/v1/kv/$1?index=$lastIndex&wait=${consulWait}s"
         log_debug "($keyDir) Poll $url"
         json=$(curl -sS $url)
         if [ $? -ne 0 ]; then

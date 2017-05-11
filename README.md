@@ -25,8 +25,8 @@ Here are the `ENV` var available, and their default value:
 # usualy the local Consul agent
 CONSUL_URL: http://localhost:8500
 
-# the time we wait polling for change
-CONSUL_WAIT: 5m
+# the time (in second) we wait polling for change
+CONSUL_WAIT: 300
 
 # 0=TRACE, 1=DEBUG, 2=INFO, 3=WARN, 4=ERROR, 5=OFF
 LOG_LEVEL: 2
