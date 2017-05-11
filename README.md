@@ -24,9 +24,13 @@ Here are the `ENV` var available, and their default value:
 ```yml
 # usualy the local Consul agent
 CONSUL_URL: http://localhost:8500
+
 # the time we wait polling for change
 CONSUL_WAIT: 5m
+
 # 0=TRACE, 1=DEBUG, 2=INFO, 3=WARN, 4=ERROR, 5=OFF
 LOG_LEVEL: 2
+
+# the container local (and symetricly host mounted) folder where to put the project files
 WORK_DIR: /var/lib/auto-compose
 ```
